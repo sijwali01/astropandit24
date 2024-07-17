@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Astropandit24</title>
+    <link rel="icon" type="image/x-icon" href="assets/astrology.png">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .modal {
+        display: none;
+      }
+      .modal.show {
+        display: flex;
+      }
+    
+    </style>
+  </head>
+
+  <body class="bg-gray-100 dark:bg-gray-800">
+    <div class="flex flex-col min-h-screen">
+        <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+            <div class="max-w-screen-xl mx-auto px-4">
+                <div class="flex items-center justify-between py-4">
+        
+                    <!-- Logo or Site Name -->
+                    <span class="text-2xl font-semibold text-gray-900 dark:text-white">Astropandit 24</span>
+        
+                    <!-- Right Side Buttons -->
+                    <div class="flex items-center space-x-4">
+        
+                        <!-- WhatsApp Icon and Link -->
+                        <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer" class="whatsapp-icon text-gray-600 dark:text-gray-300 hover:text-green-500">
+                            <i class="fab fa-whatsapp fa-lg"></i>
+                        </a>
+        
+                        <!-- Go to Top Button -->
+                        <button onclick="goToTop()" class="go-top-button text-gray-600 dark:text-gray-300 hover:text-blue-500" aria-label="Go to Top">
+                            <i class="fas fa-arrow-up fa-lg"></i>
+                        </button>
+        
+                        <!-- Buy Now Button -->
+                        <button id="buyNowButton" type="button" class="text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-red-700 dark:focus:ring-blue-800">Buy Now - ₹299</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        
+
+      <div
+        id="modal"
+        class="modal fixed inset-0 bg-gray-600 bg-opacity-50 justify-center items-center z-50"
+      >
+        <div
+          class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full"
+        >
+          <h2 class="text-2xl font-semibold mb-4 dark:text-white">
+            Kundli@Astropandit24 <span> From - ₹299</span>
+          </h2>
+          <form class="max-w-md mx-auto bg-white shadow-md rounded px-8 py-2">
+            <div class="mb-2">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="first-name"
+                >First Name *</label
+              >
+              <input
+                id="first-name"
+                type="text"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="First Name"
+                required
+              />
+            </div>
+            <div class="mb-2">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="last-name"
+                >Last Name *</label
+              >
+              <input
+                id="last-name"
+                type="text"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Last Name"
+                required
+              />
+            </div>
+            <div class="mb-2">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="birth-date"
+                >Birth Date (DD/MM/YYYY) *</label
+              >
+              <input
+                id="birth-date"
+                type="datetime-local"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="DD/MM/YYYY"
+                required
+              />
+            </div>
+            <div class="mb-2">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="birth-place"
+                >Birth Place *</label
+              >
+              <input
+                id="birth-place"
+                type="text"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Birth Place"
+                required
+              />
+            </div>
+            <div class="mb-2">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="gender"
+                >Gender</label
+              >
+              <select
+                id="gender"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              >
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="mobile-number"
+                >Mobile Number *</label
+              >
+              <input
+                id="mobile-number"
+                type="text"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Mobile Number"
+                required
+              />
+            </div>
+            <div class="mb-6">
+              <label
+                class="block text-gray-700 text-sm font-bold mb-2"
+                for="email"
+                >Email ID *</label
+              >
+              <input
+                id="email"
+                type="email"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Email ID"
+                required
+              />
+            </div>
+            <div class="flex items-center justify-between">
+              <button
+                id="closeButton"
+                type="button"
+                class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="bg-blue-700 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              >
+                Proceed
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <main class="flex-1 mt-12">
+        <!-- Introduction Section -->
+        <section class="w-full pt-12 md:pt-24 lg:pt-32 border-b bg-gray-100">
+          <div class="px-4 md:px-6 space-y-10 xl:space-y-16">
+            <div
+              class="grid max-w-[1300px] mx-auto gap-4 px-4 sm:px-6 md:px-10 md:grid-cols-2 md:gap-16"
+            >
+              <div class="flex flex-col justify-center">
+                <h1
+                  class="text-3xl sm:text-4xl md:text-5xl xl:text-5xl 2xl:text-6xl font-bold leading-tight tracking-tighter text-gray-800"
+                >
+                  Discover Your Path to Success with Personalized Numerology
+                  Insights
+                </h1>
+                <p
+                  class="mx-auto max-w-[700px] text-gray-600 text-lg md:text-xl pt-6"
+                >
+                  Uncover the hidden dimensions of your life with our affordable
+                  and personalized Numerology Report. Transform your career,
+                  relationships, health, and finances starting today.
+                </p>
+                <div class="mt-8">
+                  <a
+                    href="#"
+                    class="inline-block bg-primary hover:bg-primary-dark text-white rounded-full py-3 px-8 text-sm font-medium transition duration-300"
+                  >
+                    Get Started <i class="fas fa-chevron-right ml-2"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="flex items-center justify-center md:justify-end">
+                <img
+                  src="/assets/header.webp"
+                  alt="Astrology"
+                  class="mx-auto sm:w-full md:max-w-full lg:max-w-[500px] xl:max-w-[600px] aspect-w-16 aspect-h-9 object-cover rounded-xl shadow-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="bg-yellow-300 py-12 mt-12">
+          <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center justify-center">
+              <!-- Left Content (Text and Cards) -->
+              <div class="lg:w-1/2 lg:pr-8">
+                <div class="text-center lg:text-left">
+                  <h6 class="text-2xl lg:text-3xl font-bold mb-4">
+                    Don't Let Your Destiny
+                    <span class="text-red-600">Remain a</span> <br /><span
+                      class="text-red-600"
+                      >Mystery</span
+                    >
+                    - Know it Now
+                  </h6>
+                  <h5 class="text-lg lg:text-xl mb-8">
+                    Unlock the secrets of your life with our affordable and
+                    personalized Numerology Report – <br />transform your
+                    career, relationships, health, and finances today
+                  </h5>
+                </div>
+                <div class="flex flex-wrap justify-center lg:justify-start">
+                  <!-- Card 1 -->
+                  <div class="w-full lg:w-1/2 p-4">
+                    <div
+                      class="bg-white rounded-lg shadow-lg p-6 text-center hover:bg-blue-100 transition duration-300"
+                    >
+                      <div class="text-4xl text-yellow-400 mb-4">
+                        <i class="fas fa-gem"></i>
+                      </div>
+                      <h6 class="text-lg font-bold mb-2">
+                        Personalized Insights
+                      </h6>
+                      <p class="text-sm text-gray-700">
+                        Get customized guidance based on your birth date
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Card 2 -->
+                  <div class="w-full lg:w-1/2 p-4">
+                    <div
+                      class="bg-white rounded-lg shadow-lg p-6 text-center hover:bg-blue-100 transition duration-300"
+                    >
+                      <div class="text-4xl text-yellow-400 mb-4">
+                        <i class="fas fa-lightbulb"></i>
+                      </div>
+                      <h6 class="text-lg font-bold mb-2">
+                        Transformational Results
+                      </h6>
+                      <p class="text-sm text-gray-700">
+                        Unlock the power to transform your life path
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Card 3 -->
+                  <div class="w-full lg:w-1/2 p-4">
+                    <div
+                      class="bg-white rounded-lg shadow-lg p-6 text-center hover:bg-blue-100 transition duration-300"
+                    >
+                      <div class="text-4xl text-yellow-400 mb-4">
+                        <i class="fas fa-chart-line"></i>
+                      </div>
+                      <h6 class="text-lg font-bold mb-2">
+                        Comprehensive Coverage
+                      </h6>
+                      <p class="text-sm text-gray-700">
+                        Get insights on relationships, health, and finances
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Card 4 -->
+                  <div class="w-full lg:w-1/2 p-4">
+                    <div
+                      class="bg-white rounded-lg shadow-lg p-6 text-center hover:bg-blue-100 transition duration-300"
+                    >
+                      <div class="text-4xl text-yellow-400 mb-4">
+                        <i class="fas fa-book"></i>
+                      </div>
+                      <h6 class="text-lg font-bold mb-2">Easy to Understand</h6>
+                      <p class="text-sm text-gray-700">
+                        Our report uses simple language
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Right Content (Image) -->
+              <div class="lg:w-1/2 mt-8 lg:mt-0">
+                <div class="text-center">
+                  <img
+                    src="assets/kundli-report.webp"
+                    alt="Kundli Report"
+                    class="mx-auto lg:mx-0 w-2/3 lg:w-full rounded-lg shadow-lg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Issues Section -->
+        <section class="w-full py-12 md:py-24 lg:py-32 border-b">
+          <div class="container mx-auto space-y-12 px-4 md:px-6">
+            <div class="text-center">
+              <h2 class="text-3xl sm:text-5xl font-bold tracking-tighter">
+                Unlock the Answers You Seek
+              </h2>
+              <p
+                class="max-w-[900px] text-gray-600 text-lg md:text-xl lg:text-base xl:text-xl mt-4"
+              >
+                Our expert astrologers can help you navigate life's challenges
+                and find the guidance you need.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <!-- Card 1: Relationship Issues -->
+              <div
+                class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105"
+              >
+                <img
+                  src="/assets/issue2.jpg"
+                  alt="Relationship Issues"
+                  class="w-full h-60 object-cover object-center transition-opacity duration-300 hover:opacity-90"
+                />
+                <div class="p-4">
+                  <h3 class="text-lg font-bold mb-2">Relationship Issues</h3>
+                  <p class="text-sm text-gray-700 mb-4">
+                    Struggling with your relationship? Our astrologers can help
+                    you understand your compatibility and find a path forward.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <button
+                      class="bg-primary hover:bg-primary-dark text-white rounded-full py-2 px-6 text-sm font-medium transition duration-300"
+                    >
+                      Get Advice <i class="fas fa-chevron-right ml-2"></i>
+                    </button>
+                    <div class="text-gray-500">
+                      <i class="fas fa-heart"></i>
+                      <span class="ml-1">143</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: Career Challenges -->
+              <div
+                class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105"
+              >
+                <img
+                  src="/assets/issue1.png"
+                  alt="Career Challenges"
+                  class="w-full h-60 object-cover object-center transition-opacity duration-300 hover:opacity-90"
+                />
+                <div class="p-4">
+                  <h3 class="text-lg font-bold mb-2">Career Challenges</h3>
+                  <p class="text-sm text-gray-700 mb-4">
+                    Feeling stuck in your career? Our astrologers can provide
+                    insights to help you find your true calling and achieve your
+                    professional goals.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <button
+                      class="bg-primary hover:bg-primary-dark text-white rounded-full py-2 px-6 text-sm font-medium transition duration-300"
+                    >
+                      Get Advice <i class="fas fa-chevron-right ml-2"></i>
+                    </button>
+                    <div class="text-gray-500">
+                      <i class="fas fa-heart"></i>
+                      <span class="ml-1">98</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Personal Growth -->
+              <div
+                class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105"
+              >
+                <img
+                  src="/assets/issue4.jpg"
+                  alt="Personal Growth"
+                  class="w-full h-60 object-cover object-center transition-opacity duration-300 hover:opacity-90"
+                />
+                <div class="p-4">
+                  <h3 class="text-lg font-bold mb-2">Personal Growth</h3>
+                  <p class="text-sm text-gray-700 mb-4">
+                    Seeking deeper self-understanding? Our astrologers can guide
+                    you on a transformative journey of personal growth and
+                    spiritual awakening.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <button
+                      class="bg-primary hover:bg-primary-dark text-white rounded-full py-2 px-6 text-sm font-medium transition duration-300"
+                    >
+                      Get Advice <i class="fas fa-chevron-right ml-2"></i>
+                    </button>
+                    <div class="text-gray-500">
+                      <i class="fas fa-heart"></i>
+                      <span class="ml-1">125</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4: Health and Wellness -->
+              <div
+                class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105"
+              >
+                <img
+                  src="/assets/issue3.jpg"
+                  alt="Health and Wellness"
+                  class="w-full h-60 object-cover object-center transition-opacity duration-300 hover:opacity-90"
+                />
+                <div class="p-4">
+                  <h3 class="text-lg font-bold mb-2">Health and Wellness</h3>
+                  <p class="text-sm text-gray-700 mb-4">
+                    Struggling with health issues? Our astrologers can provide
+                    guidance to support your well-being and vitality.
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <button
+                      class="bg-primary hover:bg-primary-dark text-white rounded-full py-2 px-6 text-sm font-medium transition duration-300"
+                    >
+                      Get Advice <i class="fas fa-chevron-right ml-2"></i>
+                    </button>
+                    <div class="text-gray-500">
+                      <i class="fas fa-heart"></i>
+                      <span class="ml-1">87</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="bg-gray-100 py-12">
+          <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-center mb-8">
+              Discover Your True Potential
+            </h1>
+            <p class="text-lg text-center text-indigo-800 mb-8">
+              When you order the Numerology Report, you'll receive a
+              comprehensive and personalized report that will reveal your unique
+              numerological vibration based on your birth date and name.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="bg-white rounded-lg p-6 shadow-md flex items-center">
+                <i class="fas fa-chart-line text-3xl text-indigo-800 mr-4"></i>
+                <p class="text-lg">Personalized Analysis</p>
+              </div>
+              <div class="bg-white rounded-lg p-6 shadow-md flex items-center">
+                <i class="fas fa-file-alt text-3xl text-indigo-800 mr-4"></i>
+                <p class="text-lg">Detailed Report</p>
+              </div>
+              <div class="bg-white rounded-lg p-6 shadow-md flex items-center">
+                <i class="fas fa-road text-3xl text-indigo-800 mr-4"></i>
+                <p class="text-lg">Life Path Insights</p>
+              </div>
+              <div class="bg-white rounded-lg p-6 shadow-md flex items-center">
+                <i class="fas fa-user text-3xl text-indigo-800 mr-4"></i>
+                <p class="text-lg">Future Predictions</p>
+              </div>
+            </div>
+
+            <div
+              class="bg-white text-black mt-10 py-6 px-4 rounded-lg shadow-md"
+            >
+              <h2 class="text-3xl font-bold mb-4">
+                Unlock the Benefits of the Numerology Report
+              </h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-star text-3xl text-indigo-800 mr-2"></i>
+                  <p class="text-lg">
+                    Gain insights into your strengths and weaknesses, understand
+                    your life purpose, and unlock your true potential.
+                  </p>
+                </div>
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-sync-alt text-3xl text-indigo-800 mr-2"></i>
+                  <p class="text-lg">
+                    Transformational results: Transform your life, career,
+                    relationships, health, and finances.
+                  </p>
+                </div>
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-book-open text-3xl text-indigo-800 mr-2"></i>
+                  <p class="text-lg">
+                    Comprehensive coverage: Covers career, relationships,
+                    health, and finances for a complete understanding of your
+                    life's purpose.
+                  </p>
+                </div>
+                <div class="flex items-center mb-4">
+                  <i
+                    class="fas fa-chart-line text-3xl text-indigo-800 mr-2"
+                  ></i>
+                  <p class="text-lg">
+                    Improved decision-making: Plan for the future and make
+                    informed choices that align with your life's purpose.
+                  </p>
+                </div>
+                <div class="flex items-center mb-4">
+                  <i class="fas fa-heart text-3xl text-indigo-800 mr-2"></i>
+                  <p class="text-lg">
+                    Relationship insights: Find compatibility and enjoy
+                    healthier, more fulfilling relationships.
+                  </p>
+                </div>
+                <div class="flex items-center">
+                  <i
+                    class="fas fa-user-check text-3xl text-indigo-800 mr-2"
+                  ></i>
+                  <p class="text-lg">
+                    Self-discovery: Understand yourself better and maximize your
+                    life's potential.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Numerology Report Section -->
+        <section class="w-full py-12 md:py-24 lg:py-32 border-b">
+          <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center">
+              <h2 class="text-3xl sm:text-5xl font-bold tracking-tighter mb-12">
+                What You will get in premium personalized kundli ?
+              </h2>
+              <!-- <p class="max-w-xl mx-auto text-gray-600 text-lg mb-8">
+                  Dive deep into your numerological profile with our comprehensive reports and discover insights about your life path, relationships, career, health, and more.
+                </p> -->
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Card 1 -->
+              <div
+                class="bg-white rounded-lg shadow-lg p-6 text-center hover:bg-blue-100 transition duration-300"
+              >
+                <div class="text-4xl text-yellow-400 mb-4">
+                  <i class="fas fa-certificate"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">
+                  Detailed Birth Number Analysis
+                </h3>
+                <p class="text-sm text-gray-700">
+                  Gain a deeper understanding of your birth number and its
+                  significance in your life.
+                </p>
+              </div>
+              <!-- Card 2 -->
+              <div
+                class="bg-white rounded-lg shadow-lg p-6 text-center hover:bg-blue-100 transition duration-300"
+              >
+                <div class="text-4xl text-yellow-400 mb-4">
+                  <i class="fas fa-seedling"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">
+                  Personalized Life Predictions
+                </h3>
+                <p class="text-sm text-gray-700">
+                  Discover what the future holds for you with our personalized
+                  life predictions.
+                </p>
+              </div>
+              <!-- Card 3 -->
+              <div
+                class="bg-white rounded-lg shadow-lg p-6 text-center hover:bg-blue-100 transition duration-300"
+              >
+                <div class="text-4xl text-yellow-400 mb-4">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">
+                  Compatibility and Relationship Insights
+                </h3>
+                <p class="text-sm text-gray-700">
+                  Explore the compatibility between you and your partner based
+                  on numerological insights.
+                </p>
+              </div>
+              <!-- Card 4 -->
+              <div
+                class="bg-white rounded-lg shadow-lg p-6 text-center hover:bg-blue-100 transition duration-300"
+              >
+                <div class="text-4xl text-yellow-400 mb-4">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">
+                  Career and Financial Forecasts
+                </h3>
+                <p class="text-sm text-gray-700">
+                  Plan your career path and financial decisions with confidence
+                  using our numerological forecasts.
+                </p>
+              </div>
+              <!-- Card 5 -->
+              <div
+                class="bg-white rounded-lg shadow-lg p-6 text-center hover:bg-blue-100 transition duration-300"
+              >
+                <div class="text-4xl text-yellow-400 mb-4">
+                  <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">
+                  Health and Wellness Guidance
+                </h3>
+                <p class="text-sm text-gray-700">
+                  Receive guidance on maintaining your well-being and achieving
+                  optimal health through numerology.
+                </p>
+              </div>
+              <!-- Card 6 -->
+              <div
+                class="bg-white rounded-lg shadow-lg p-6 text-center hover:bg-blue-100 transition duration-300"
+              >
+                <div class="text-4xl text-yellow-400 mb-4">
+                  <i class="fas fa-seedling"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">
+                  Spiritual Growth and Transformation
+                </h3>
+                <p class="text-sm text-gray-700">
+                  Embark on a journey of spiritual growth and transformation
+                  guided by numerological insights.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Client Testimonials Section -->
+        <section class="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+          <div class="container space-y-12 px-4 md:px-6">
+            <div
+              class="flex flex-col items-center justify-center space-y-4 text-center"
+            >
+              <div class="space-y-2">
+                <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Client Testimonials
+                </h2>
+              </div>
+            </div>
+            <div
+              class="grid gap-8 sm:max-w-4xl mx-auto sm:grid-cols-2 lg:max-w-5xl lg:grid-cols-3"
+            >
+              <div
+                class="flex flex-col items-center space-y-4 bg-white rounded-lg p-6 shadow-md"
+              >
+                <div class="rounded-full overflow-hidden">
+                  <img
+                    src="assets/images.jpg"
+                    alt="Client 1"
+                    class="rounded-full h-20 w-20 object-cover"
+                  />
+                </div>
+                <p class="text-lg font-bold">Emily Johnson</p>
+                <p class="text-sm text-gray-500">Age 34</p>
+                <p class="text-sm text-gray-600">
+                  <i class="fas fa-quote-left text-primary mr-2"></i>
+                  Astropandit24 has provided me with invaluable insights that
+                  have helped me navigate some of the toughest challenges in my
+                  life. I'm forever grateful!
+                  <i class="fas fa-quote-right text-primary ml-2"></i>
+                </p>
+              </div>
+              <div
+                class="flex flex-col items-center space-y-4 bg-white rounded-lg p-6 shadow-md"
+              >
+                <div class="rounded-full overflow-hidden">
+                  <img
+                    src="assets/images (1).jpg"
+                    alt="Client 2"
+                    class="rounded-full h-20 w-20 object-cover"
+                  />
+                </div>
+                <p class="text-lg font-bold">Michael Smith</p>
+                <p class="text-sm text-gray-500">Age 42</p>
+                <p class="text-sm text-gray-600">
+                  <i class="fas fa-quote-left text-primary mr-2"></i>
+                  The numerology report I received was incredibly accurate and
+                  insightful. It helped me make important decisions with
+                  confidence.
+                  <i class="fas fa-quote-right text-primary ml-2"></i>
+                </p>
+              </div>
+              <div
+                class="flex flex-col items-center space-y-4 bg-white rounded-lg p-6 shadow-md"
+              >
+                <div class="rounded-full overflow-hidden">
+                  <img
+                    src="assets/images (2).jpg"
+                    alt="Client 3"
+                    class="rounded-full h-20 w-20 object-cover"
+                  />
+                </div>
+                <p class="text-lg font-bold">Sophia Brown</p>
+                <p class="text-sm text-gray-500">Age 29</p>
+                <p class="text-sm text-gray-600">
+                  <i class="fas fa-quote-left text-primary mr-2"></i>
+                  I've always been interested in astrology, and Astropandit24's
+                  readings have exceeded my expectations. Highly recommended!
+                  <i class="fas fa-quote-right text-primary ml-2"></i>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-primary text-primary-foreground py-8">
+        <div class="container mx-auto px-4 lg:px-6">
+          <div class="flex flex-wrap items-center justify-center">
+            <!-- Logo -->
+            <div class="w-full md:w-auto mb-4 md:mb-0">
+              <img src="assets/astrology.png" alt="logo" class="h-12">
+            </div>
+            <!-- Copyright and additional info -->
+            <div class="text-center md:text-left text-sm flex flex-wrap items-center justify-center md:justify-start space-y-2 md:space-y-0 md:ml-4">
+              <p class="mb-2 md:mb-0">&copy; 2024 Astropandit24. All rights reserved.</p>
+              <div class="flex space-x-4">
+                <!-- Trusted -->
+                <div class="flex items-center ml-4">
+                  <img src="assets/trust.png" alt="Trusted" class="h-8 mr-2">
+                  <h6 class="text-sm">Trusted</h6>
+                </div>
+                <!-- Happily served -->
+                <div class="flex items-center">
+                  <img src="assets/affection.png" alt="Happily served" class="h-8 mr-2">
+                  <h6 class="text-sm">Happily served</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+      
+    </div>
+
+    <script src="script.js">
+  
+    </script>
+  </body>
+</html>
